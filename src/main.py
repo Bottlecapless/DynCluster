@@ -15,7 +15,7 @@ Email: wangbottlecap@gmail.com
 
 import logger
 from constants.constants import *
-
+from backgrounds import DataReader
 
 def main():
     """
@@ -23,6 +23,13 @@ def main():
     """
     LOGGER = logger.setup_logging()
     LOGGER.info(f"This project is a course project for Prof. Qinwu Xu's Mathematical Theory of Machine Learning (Spring 2025), School of Mathematics, Nanjing University. It mainly focuses on the problem of dynamic clustering.")
+    
+    rd = DataReader()
+    rd.read_fvecs()
+    print(rd.data)
+    k = 10  # Number of clusters
+    
+    
     return
 
 

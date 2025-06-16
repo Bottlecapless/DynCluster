@@ -10,3 +10,5 @@ ROOT_DIR = project_root
 RESULTS_DIR = os.path.join(project_root, "Results")
 SRC_DIR = os.path.join(project_root, "src")
 DATA_DIR = os.path.join(project_root, "data")
+
+GIST_DIR = os.path.join(DATA_DIR, "gist_query.fvecs")
