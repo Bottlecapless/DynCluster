@@ -16,6 +16,7 @@ Email: wangbottlecap@gmail.com
 import logger
 from constants.constants import *
 from backgrounds import DataReader
+from optimizer import DynamicKmeansController
 
 def main():
     """
@@ -27,8 +28,9 @@ def main():
     rd = DataReader()
     rd.read_fvecs()
     print(rd.data)
-    k = 10  # Number of clusters
-    
+
+    ctr = DynamicKmeansController(data=rd.data)
+    ctr.run()    
     
     return
 

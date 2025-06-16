@@ -7,7 +7,10 @@ from sklearn.random_projection import GaussianRandomProjection
 from mpl_toolkits.mplot3d import Axes3D  # 用于 3D 绘图
 from copy import deepcopy
 
+import logging
 from constants.filepath_constants import GIST_DIR
+
+LOGGER = logging.getLogger(__name__)
 
 class DataReader:
     """
@@ -21,6 +24,8 @@ class DataReader:
     
     @property
     def data(self):
+        if self.__data is None:
+            LOGGER.warning(f"DataReader: function <read_fvecs> should be utilized before get data.")
         return deepcopy(self.__data)
     
     def getData(self): return self.__data
@@ -45,4 +50,5 @@ class DataReader:
                 data.append(vec)
                 count += 1
         self.__data = np.array(data)
+        LOGGER.info(f"DataReader: read_fvecs finished.")
         return 
