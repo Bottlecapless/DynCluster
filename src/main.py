@@ -39,14 +39,8 @@ def main():
 
     processer = ComparisonProcessor(dyn, sta)
     plotter = ComparisonPlotter(processer)
+    plotter.print_center_distance()
     plotter.plotAll()
-
-    # print(ctr.cluster_data_indices)
-
-
-    # static_ctrl = StaticKmeansController(rd.data, true_labels_array, k=10)
-    # static_ctrl.run_faiss()
-    # print(static_ctrl.report())
     
     return
 
