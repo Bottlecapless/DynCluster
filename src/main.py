@@ -16,7 +16,9 @@ Email: wangbottlecap@gmail.com
 import logger
 from constants.constants import *
 from backgrounds import DataReader
-from optimizer import DynamicKmeansController
+from optimizer import DynamicKmeansController, StaticKmeansController
+from processer import ComparisonProcessor
+from plotter import ComparisonPlotter
 
 def main():
     """
@@ -29,8 +31,22 @@ def main():
     rd.read_fvecs()
     print(rd.data)
 
-    ctr = DynamicKmeansController(data=rd.data)
-    ctr.run()    
+    dyn = DynamicKmeansController(data=rd.data)
+    dyn.run()
+    
+    sta = StaticKmeansController(data=rd.data, k=dyn.getCentroidsNum())
+    sta.run()
+
+    processer = ComparisonProcessor(dyn, sta)
+    plotter = ComparisonPlotter(processer)
+    plotter.plotAll()
+
+    # print(ctr.cluster_data_indices)
+
+
+    # static_ctrl = StaticKmeansController(rd.data, true_labels_array, k=10)
+    # static_ctrl.run_faiss()
+    # print(static_ctrl.report())
     
     return
 
