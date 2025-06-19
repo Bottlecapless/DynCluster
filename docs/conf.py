@@ -26,3 +26,19 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
+
+# -- Options for LaTeX output -------------------------------------------------
+
+# 使用 XeLaTeX 引擎以支持中文
+latex_engine = 'xelatex'
+
+latex_elements = {
+    # 让 chapter 从任意一页开始（取消默认的“右开”空白页）
+    'classoptions': ',openany,oneside',
+
+    # 在导言区加载 ctex 宏包以支持中文
+    'preamble': r'''
+\usepackage{ctex}
+''',
+}
